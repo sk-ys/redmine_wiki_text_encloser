@@ -8,8 +8,8 @@
   jsToolBar.prototype.elements["wiki_text_encloser"] =
     initTextEnclosingEnhancer;
 
-  const targetStartKeys = "!\"#$%'(`{[</\\_~|";
-  const targetEndKeys = "!\"#$%')`}]>/\\_~|";
+  const targetStartKeys = WikiTextEncloser.settings.targetStartSymbols;
+  const targetEndKeys = WikiTextEncloser.settings.targetEndSymbols;
 
   jsToolBar.prototype.init_wiki_text_encloser = function () {
     const jsToolBarInstance = this;

@@ -1,9 +1,13 @@
 <% content_for :header_tags do %>
   <script>
+    //<![CDATA[
     var WikiTextEncloser = {
-      config: {
+      settings: {
+        targetStartSymbols: "<%= Setting.plugin_redmine_wiki_text_encloser[:target_start_symbols] %>",
+        targetEndSymbols: "<%= Setting.plugin_redmine_wiki_text_encloser[:target_end_symbols] %>"
       }
     }
+    //]]>
   </script>
   <%= javascript_include_tag "wiki_text_encloser", plugin: "redmine_wiki_text_encloser" %>
 <% end %>

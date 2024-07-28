@@ -1,0 +1,6 @@
+# Japanese strings go here for Rails i18n
+ja:
+  wiki_text_encloser:
+    label_symbol_list_length_must_match: 開始記号リストと終了記号リストの長さは等しい必要があります。
+    label_target_start_symbols: 開始記号リスト
+    label_target_end_symbols: 終了記号リスト

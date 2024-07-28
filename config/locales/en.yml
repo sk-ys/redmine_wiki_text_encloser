@@ -1,0 +1,6 @@
+# English strings go here for Rails i18n
+en:
+  wiki_text_encloser:
+    label_symbol_list_length_must_match: The length of the start symbol list and the end symbol list must be the same.
+    label_target_start_symbols: Start symbols list
+    label_target_end_symbols: End symbols list

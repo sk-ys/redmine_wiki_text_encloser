@@ -1,0 +1,11 @@
+  <fieldset>
+    <p>
+      <label for="target_start_symbols"><%= l(:label_target_start_symbols, scope: :wiki_text_encloser) %></label><br />
+      <%= text_field_tag "settings[target_start_symbols]", @settings[:target_start_symbols] %>
+    </p>
+    <p>
+      <label for="target_end_symbols"><%= l(:label_target_end_symbols, scope: :wiki_text_encloser) %></label><br />
+      <%= text_field_tag "settings[target_end_symbols]", @settings[:target_end_symbols] %>
+    </p>
+    <p>⚠<%= l(:label_symbol_list_length_must_match, scope: :wiki_text_encloser) %></p>
+  </fieldset>

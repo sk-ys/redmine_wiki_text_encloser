@@ -7,4 +7,10 @@ Redmine::Plugin.register :redmine_wiki_text_encloser do
   version '0.1.1'
   url 'https://github.com/sk-ys/redmine_wiki_text_encloser'
   author_url 'https://github.com/sk-ys'
+
+  settings default: {
+    target_start_symbols: "!\"#$%'(`{[</\\_~|",
+    target_end_symbols: "!\"#$%')`}]>/\\_~|",
+  },
+    partial: 'settings/wiki_text_encloser'
 end
