@@ -7,5 +7,33 @@
       <label for="target_end_symbols"><%= l(:label_target_end_symbols, scope: :wiki_text_encloser) %></label><br />
       <%= text_field_tag "settings[target_end_symbols]", @settings[:target_end_symbols] %>
     </p>
-    <p>⚠<%= l(:label_symbol_list_length_must_match, scope: :wiki_text_encloser) %></p>
+    <p id="notice_miss_match">⚠<%= l(:label_symbol_list_length_must_match, scope: :wiki_text_encloser) %></p>
+    <script>
+    //<![CDATA[
+    document.addEventListener("DOMContentLoaded", () => {
+      const submitButton = document.querySelector("input[type=submit]");
+
+      function validateSymbolListLength() {
+        if (
+          settings_target_start_symbols.value.length ===
+          settings_target_end_symbols.value.length
+        ) {
+          notice_miss_match.style.color = "";
+          submitButton.disabled = false;
+        } else {
+          notice_miss_match.style.color = "red";
+          submitButton.disabled = true;
+        }
+      }
+
+      settings_target_start_symbols.addEventListener("change", validateSymbolListLength);
+      settings_target_start_symbols.addEventListener("keyup", validateSymbolListLength);
+      settings_target_end_symbols.addEventListener("change", validateSymbolListLength);
+      settings_target_end_symbols.addEventListener("keyup", validateSymbolListLength);
+
+      // First invoke
+      validateSymbolListLength();
+    });
+    //]]>
+    </script>
   </fieldset>
