@@ -1,0 +1,9 @@
+<% content_for :header_tags do %>
+  <script>
+    var WikiTextEncloser = {
+      config: {
+      }
+    }
+  </script>
+  <%= javascript_include_tag "wiki_text_encloser", plugin: "redmine_wiki_text_encloser" %>
+<% end %>
