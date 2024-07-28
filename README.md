@@ -9,8 +9,10 @@ This plugin adds the ability to automatically enclose the selected text in the W
 2. Enter the symbol to enclose the text. The closing symbol will be automatically added.  
 ![02](doc/images/02_enter_symbol.png)
 
-### Supported Symbols
-- !"#$%'(`{[</\\_~|
+## Supported Symbols
+- In version 0.2.0 or later, symbols can be customized in the plugin's settings screen.
+    - ![plugin_settings](doc/images/plugin_settings.png)
+    - Default symbols: !"#$%'(`{[</\\_~|
 
 ## Installation
 ### When using git
