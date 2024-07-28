@@ -10,7 +10,7 @@ This plugin adds the ability to automatically enclose the selected text in the W
 ![02](doc/images/02_enter_symbol.png)
 
 ### Supported Symbols
-- !"#$%'(`{[</\\_~
+- !"#$%'(`{[</\\_~|
 
 ## Installation
 ### When using git
