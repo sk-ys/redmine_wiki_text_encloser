@@ -4,7 +4,7 @@ Redmine::Plugin.register :redmine_wiki_text_encloser do
   name 'Redmine Wiki Text Encloser'
   author 'sk-ys'
   description 'Adds the ability to automatically enclose the selected text in the Wiki.'
-  version '0.1.1'
+  version '0.2.0'
   url 'https://github.com/sk-ys/redmine_wiki_text_encloser'
   author_url 'https://github.com/sk-ys'
 
