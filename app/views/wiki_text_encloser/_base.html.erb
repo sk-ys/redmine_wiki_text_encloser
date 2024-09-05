@@ -3,8 +3,8 @@
     //<![CDATA[
     var WikiTextEncloser = {
       settings: {
-        targetStartSymbols: "<%= Setting.plugin_redmine_wiki_text_encloser[:target_start_symbols] %>",
-        targetEndSymbols: "<%= Setting.plugin_redmine_wiki_text_encloser[:target_end_symbols] %>"
+        targetStartSymbols: $("<div>").html("<%= Setting.plugin_redmine_wiki_text_encloser[:target_start_symbols] %>").text(),
+        targetEndSymbols: $("<div>").html("<%= Setting.plugin_redmine_wiki_text_encloser[:target_end_symbols] %>").text(),
       }
     }
     //]]>
