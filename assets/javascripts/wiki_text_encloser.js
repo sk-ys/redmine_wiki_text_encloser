@@ -1,38 +1,33 @@
 (() => {
   if (typeof jsToolBar === "undefined") return;
 
-  const initTextEnclosingEnhancer = {
+  const initialized = new WeakSet();
+  const startSymbols = Array.from(WikiTextEncloser.settings.targetStartSymbols);
+  const endSymbols = Array.from(WikiTextEncloser.settings.targetEndSymbols);
+
+  jsToolBar.prototype.elements.wiki_text_encloser = {
     type: "init_wiki_text_encloser",
   };
 
-  jsToolBar.prototype.elements["wiki_text_encloser"] =
-    initTextEnclosingEnhancer;
-
-  const targetStartKeys = WikiTextEncloser.settings.targetStartSymbols;
-  const targetEndKeys = WikiTextEncloser.settings.targetEndSymbols;
-
   jsToolBar.prototype.init_wiki_text_encloser = function () {
-    const jsToolBarInstance = this;
-    jsToolBarInstance.textarea.addEventListener("keydown", (e) => {
-      if (e.target.selectionStart === e.target.selectionEnd) return;
+    const textarea = this.textarea;
+    if (initialized.has(textarea)) return;
+    initialized.add(textarea);
 
-      const targetKeyIndex = targetStartKeys.indexOf(e.key);
-      if (targetKeyIndex === -1) return;
+    textarea.addEventListener("keydown", (event) => {
+      if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || textarea.readOnly || textarea.disabled) return;
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      if (start === end) return;
 
-      e.preventDefault();
-      const startKey = targetStartKeys[targetKeyIndex];
-      const endKey = targetEndKeys[targetKeyIndex];
-      const start = e.target.selectionStart;
-      const end = e.target.selectionEnd;
-      const beforeSelection = e.target.value.substring(0, start);
-      const afterSelection = e.target.value.substring(end);
-      const selection = e.target.value.substring(start, end);
+      const index = startSymbols.indexOf(event.key);
+      if (index === -1 || !endSymbols[index]) return;
 
-      e.target.value =
-        beforeSelection + startKey + selection + endKey + afterSelection;
-
-      e.target.selectionStart = start;
-      e.target.selectionEnd = end + 2;
+      event.preventDefault();
+      const opening = startSymbols[index];
+      const closing = endSymbols[index];
+      textarea.setRangeText(opening + textarea.value.slice(start, end) + closing, start, end, "select");
+      textarea.dispatchEvent(new Event("input", { bubbles: true }));
     });
   };
 })();

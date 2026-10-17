@@ -1,13 +1,11 @@
 <% content_for :header_tags do %>
   <script>
-    //<![CDATA[
-    var WikiTextEncloser = {
-      settings: {
-        targetStartSymbols: $("<div>").html("<%= Setting.plugin_redmine_wiki_text_encloser[:target_start_symbols] %>").text(),
-        targetEndSymbols: $("<div>").html("<%= Setting.plugin_redmine_wiki_text_encloser[:target_end_symbols] %>").text(),
-      }
-    }
-    //]]>
+    window.WikiTextEncloser = {
+      settings: <%= raw json_escape({
+        targetStartSymbols: Setting.plugin_redmine_wiki_text_encloser[:target_start_symbols].to_s,
+        targetEndSymbols: Setting.plugin_redmine_wiki_text_encloser[:target_end_symbols].to_s
+      }.to_json) %>
+    };
   </script>
   <%= javascript_include_tag "wiki_text_encloser", plugin: "redmine_wiki_text_encloser" %>
 <% end %>

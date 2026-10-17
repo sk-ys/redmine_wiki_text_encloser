@@ -14,6 +14,12 @@ This plugin adds the ability to automatically enclose the selected text in the W
     - ![plugin_settings](doc/images/plugin_settings.png)
     - Default symbols: !"#$%'(`{[</\\_~|
 
+## Editor behavior
+
+Configured symbol pairs are passed to JavaScript as escaped JSON, preserving quotes, backslashes, and line breaks. Each toolbar textarea is initialized once, including after toolbar redraws. Wrapping keeps the result selected and emits a bubbling `input` event so editor listeners can detect the change. Modifier shortcuts, IME composition, and read-only or disabled editors are left to their existing handlers. Only configured opening symbols with matching closing symbols wrap a nonempty selection.
+
+Local checks on Redmine 7.0.2 / Rails 8.1.4 covered settings rendering, selection wrapping, preview/edit switching, redraws, and dynamically created editors at desktop and mobile widths. These checks used Ruby 4.0.7 and SQLite; they do not establish compatibility with every deployment or theme.
+
 ## Installation
 ### When using git
 1. Clone this repository to your Redmine plugins directory.
